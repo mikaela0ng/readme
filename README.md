@@ -2,7 +2,7 @@
 ---
 ## Table of Contents
 
-1. [Overview of Observability](#OverviewofObservability)
+1. [Overview of Observability](#Overview)
 2. [Features](#Observability:Monitoring&Logging)
 3. [Installation](#installation)
 4. [Usage](#usage)
