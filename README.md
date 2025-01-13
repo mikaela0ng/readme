@@ -1,13 +1,9 @@
-# Observability Logging & Monitoring
-
-A brief description of your project.
-
+# Observability: Monitoring & Logging
 ---
-
 ## Table of Contents
 
-1. [Introduction](#introduction)
-2. [Features](#features)
+1. [Overview of Observability](#OverviewofObservability)
+2. [Features](#Observability:Monitoring&Logging)
 3. [Installation](#installation)
 4. [Usage](#usage)
 5. [Contributing](#contributing)
@@ -16,12 +12,11 @@ A brief description of your project.
 
 ---
 
-## Introduction
+## Overview of Observability
 
-Provide a detailed description of your project. Explain what it does, why it’s useful, and any important context or background information. You can also include a screenshot here to help users understand the visual aspect of your project.
+### Observability: Monitoring & Logging
+Provides real-time insights into the health, performance, and status of workloads running within the Kubernetes environment. As the solution consists of structured logging, monitoring, and alerting, we enable efficient troubleshooting and rapid investigation of potential issues.
 
-Example:
-> This project is a tool that helps users analyze and visualize their spending habits by parsing transaction data.
 
 ---
 
