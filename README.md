@@ -12,17 +12,61 @@
 ---
 ## Overview of Observability
 
-## Observability: Monitoring & Logging
+### Observability: Monitoring & Logging
 Provides real-time insights into the health, performance, and status of workloads running within the Kubernetes environment. As the solution consists of structured logging, monitoring, and alerting, we enable efficient troubleshooting and rapid investigation of potential issues.
----
 
 ## Project Description
 
 ### Project Overview
 The project aims to provide real-time insights into the health, performance, and status of workloads running within the Kubernetes environment. As the solution consists of structured logging, monitoring, and alerting, we enable efficient troubleshooting and rapid investigation of potential issues.
-
 ### Project Purpose
 The purpose of this project is to provide real-time insights into the health, performance, and status of workloads running within the Kubernetes environment. As the solution consists of structured logging, monitoring, and alerting, we enable efficient troubleshooting and rapid investigation of potential issues.
+
+## Objectives:
+
+### General Objectives
+To use prometheus, alertmanager, grafana, and splunk to monitor logs of webapp and k8s cluster for efficient troubleshooting and problem/incident investigation.
+
+Specifically, the group aims to do the following per tools:
+
+    ● Webapps
+○Deployed in a Kubernetes cluster
+○Properties that enable to simulate the following issues:
+■High HTTP 5xx errors
+■High HTTP 4xx errors
+■Exporters stopped working
+■Splunkforwarder service or sidecar stopped working
+●Jenkins
+○set up a CI/CD pipeline that build and deploys the app whenever code changes
+●Prometheus
+○metric gathering solution of webapp
+●Alerting using Alertmanager/Prometheus or Splunk
+○create alerting rules based on the KPIs:
+■% availability
+■resource utilization
+■out of memory errors
+■error rates
+○establish threshold and implement annotations
+●Grafana
+○use Prometheus as data source
+○create a set of dashboard to monitor the following:
+■cluster overview
+□count of pods running
+□count of pods failed
+□count of pods ready
+□ccount of pods not ready
+□node count
+□etc
+■Chart view of containers
+□resource utilization
+□pod resources
+□node resources over time
+●Splunk
+○ingest logs from both webapp and k8s cluster
+○create custom dashboard for different components of the webapp
+■user activity
+■error rates
+○configure user roles and permissions, allow new users to search through log with minimum privileges
 
 ---
 
