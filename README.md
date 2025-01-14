@@ -160,7 +160,134 @@ subjects:
   - kind: ServiceAccount
     name: jenkins-admin
     namespace: jenkins
-```      
+```
+- Then apply the Service Account:
+```bash
+$ kubectl apply -f jenkins-serviceaccount.yaml
+```
+- Create PVC for Persistent Jenkins Data:
+```bash
+$ vi jenkins-volumes.yaml
+```
+- Copy and paste the following:
+```bash
+apiVersion: v1 
+kind: PersistentVolumeClaim 
+metadata: 
+  name: jenkins-pvc 
+  namespace: jenkins 
+spec: 
+  storageClassName: linode-block-storage-retain 
+  accessModes: 
+    - ReadWriteOnce 
+  resources: 
+    requests: 
+      storage: 10Gi 
+```
+- Then apply the PVC:
+```bash
+$ kubectl apply -f jenkins-volumes.yaml
+```
+- Create Deployment:
+```bash
+$ vi jenkins-deployment.yaml
+```
+- Copy and paste the following:
+```bash
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  name: jenkins 
+  namespace: jenkins 
+spec: 
+  replicas: 1 
+  selector: 
+    matchLabels: 
+      app: jenkins-server 
+  template: 
+    metadata: 
+      labels: 
+        app: jenkins-server 
+    spec: 
+      securityContext: 
+            fsGroup: 1000 
+            runAsUser: 1000 
+      serviceAccountName: jenkins-admin 
+      containers: 
+        - name: jenkins 
+          image: jenkins/jenkins:lts 
+          resources: 
+            limits: 
+              memory: "2Gi" 
+              cpu: "1000m" 
+            requests: 
+              memory: "500Mi" 
+              cpu: "500m" 
+          ports: 
+            - name: httpport 
+              containerPort: 8080 
+            - name: jnlpport 
+              containerPort: 50000 
+          livenessProbe: 
+            httpGet: 
+              path: "/login" 
+              port: 8080 
+            initialDelaySeconds: 90 
+            periodSeconds: 10 
+            timeoutSeconds: 5 
+            failureThreshold: 5 
+          readinessProbe: 
+            httpGet: 
+              path: "/login" 
+              port: 8080 
+            initialDelaySeconds: 60 
+            periodSeconds: 10 
+            timeoutSeconds: 5 
+            failureThreshold: 3 
+          volumeMounts: 
+            - name: jenkins-data 
+              mountPath: /var/jenkins_home 
+      volumes: 
+        - name: jenkins-data 
+          persistentVolumeClaim: 
+              claimName: jenkins-pvc
+```
+- Then apply the deployment:
+```bash
+$ kubectl apply -f jenkins-deployment.yaml
+```
+- Create a service to expose Jenkins:
+```bash
+$ vi jenkins-service.yaml
+```
+- Copy and paste the following:
+```bash
+apiVersion: v1 
+kind: Service 
+metadata: 
+  name: jenkins-service 
+  namespace: jenkins 
+  annotations: 
+      prometheus.io/scrape: 'true' 
+      prometheus.io/path:   / 
+      prometheus.io/port:   '8080' 
+spec: 
+  selector: 
+    app: jenkins-server 
+  type: NodePort 
+  ports: 
+    - port: 8080 
+      targetPort: 8080 
+      nodePort: 30000 
+```
+- Then apply the service:
+```bash
+$ kubectl apply -f jenkins-service.yaml
+```
+- Create a service to expose Jenkins:
+```bash
+$ vi jenkins-service.yaml
+```
 ---
 ## Installation
 
