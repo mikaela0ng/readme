@@ -9,6 +9,7 @@
    - [Deploying Jenkins](#Deploying-Jenkins)
    - [Deploying Webapp via Jenkins](#Deploying-Webapp-via-Jenkins)
    - [Deploying Prometheus](#Deploying-Prometheus)
+   - [Deploying Splunk](#Deploying-Splunk)
 5. [Contributing](#contributing)
 6. [License](#license)
 7. [Acknowledgements](#acknowledgements)
@@ -457,3 +458,9 @@ $ kubectl apply -f service-monitor.yaml
 ```
 - It will scape metrics in /metrics endpoint of the webapp.
 ---
+## Deploying Splunk
+### Deploying Splunk Enterprise with Splunk Operator using Helm:
+   - Installing Splunk Operator using the [Splunk Documentation](https://splunk.github.io/splunk-operator/#installing-the-splunk-operator):
+```bash
+   $ kubectl create namespace monitoring
+```
