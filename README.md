@@ -460,7 +460,8 @@ $ kubectl apply -f service-monitor.yaml
 ---
 ## Deploying Splunk
 ### Deploying Splunk Enterprise with Splunk Operator using Helm:
-   - Installing Splunk Operator using the [Splunk Documentation](https://splunk.github.io/splunk-operator/#installing-the-splunk-operator):
+   - Installing Splunk Operator using the [Splunk Documentation](https://splunk.github.io/splunk-operator/#installing-the-splunk-operator)
+      - Start the Splunk Operator on a specific namespace:
 ```bash
-   $ kubectl create namespace monitoring
+   $ kubectl apply -f https://github.com/splunk/splunk-operator/releases/download/2.7.0/splunk-operator-namespace.yaml --server-side  --force-conflicts
 ```
