@@ -12,7 +12,7 @@
 ---
 ## Overview of Observability
 
-### Observability: Monitoring & Logging
+## Observability: Monitoring & Logging
 Provides real-time insights into the health, performance, and status of workloads running within the Kubernetes environment. As the solution consists of structured logging, monitoring, and alerting, we enable efficient troubleshooting and rapid investigation of potential issues.
 ---
 
