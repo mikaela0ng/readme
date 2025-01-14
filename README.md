@@ -1,5 +1,4 @@
 # Observability: Monitoring & Logging
----
 ## Table of Contents
 
 1. [Overview of Observability](#Overview-of-Observability)
