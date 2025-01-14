@@ -382,15 +382,46 @@ $ kubectl get nodes -o wide
 - The Webapp should be depoyed on the node that is specified.
 
 ## Deploying Prometheus
-- Pre-requisites:
+### Pre-requisites:
    - Installing Helm
       - Follow Instruction in the [Helm Website](https://helm.sh/docs/intro/install/) using Script
-
-
-
+   - Setting up Prometheus using Helm
+      - Create a "monitoring" namespace
 ```bash
-$ kubectl create namespace jenkins
+   $ kubectl create namespace monitoring
 ```
+   - Add Helm Repository Info
+```bash
+$ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts 
+$ helm repo update 
+```
+   - Install Prometheus Operator
+```bash
+$ helm install prometheus-operator prometheus-community/kube-prometheus-stack -n monitoring 
+```
+   - Change Services to NodePort
+```bash
+$ kubectl edit service -n monitoring <service-name>
+```
+
+   - Change and add the following to the service yml file, use the command above:
+      - Service name: prometheus-operator-kube-p-prometheus
+         - type: NodePort
+         - nodePort: 32090
+       - Service name: prometheus-operator-kube-p-alertmanager
+         - type: NodePort
+         - nodePort: 32091
+       - Service name: prometheus-operator-grafana
+         - type: NodePort
+         - nodePort: 32092
+        
+### Accessing UI's on the browser
+- Prometheus:
+   - &lt;Node-IP-Adress&gt;:32090
+
+
+
+
 
 
 
