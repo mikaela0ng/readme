@@ -125,8 +125,7 @@ Specifically, the group aims to do the following per tools:
 
 ---
 ## User Handbook
-### Pre-requisites
-
+## Pre-requisites
 - Installing Helm
    - Follow the instructions in the [Helm Website](https://helm.sh/docs/intro/install/) using Script or visit the link below:
 ```bash
@@ -157,7 +156,7 @@ $ sudo yum install git -y
 
 
 
-### Deploying Jenkins
+## Deploying Jenkins
 
 ### 1. Installing Jenkins in a Kubernetes Cluster
 - Create a namespace:
