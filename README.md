@@ -79,6 +79,7 @@ Specifically, the group aims to do the following per tools:
    <img src="assets/sc.png" alt="Example Image" width="80%" />
    <h1>Source Code Management(SCM)</h1>
 </div>
+
 - Source Code Management (SCM): GitHub
 - CI/CD Automation Server: Connects to GitHub
 - Build Docker Images: CI/CD server pushes images to Dockerhub
