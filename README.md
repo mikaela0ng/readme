@@ -520,7 +520,7 @@ $ kubectl apply -f service-monitor.yaml
    - To access the Splunk Web UI:
       - &lt;Node-IP-Adress&gt;:32093
 
-- Getting the Password
+- Modifying the Password
    - Getting the Current Password
       ```bash
       $ kubectl get secret -n splunk-operator 
@@ -530,5 +530,48 @@ $ kubectl apply -f service-monitor.yaml
       ```bash
       $ echo “<Decode Password’s Value>” | base64 -d
       ```
+
+   - Changing the Password
+      ```bash
+      $ echo “<new password>” | base64
+      $ kubectl get secret -n splunk-operator
+      $ kubectl edit secret -n splunk-operator <splunk-splunk-operator-secret> 
+      ```
+     - Then change the password’s value to the new encoded password.
+      ```bash
+      $ kubectl get secret -n splunk-operator
+      ```
+  ## Note:
+  - Make sure that the labels of PV and PVC matched.
+  - Make sure they have the same access modes.
+ 
+- Ingesting Data to Splunk
+   - Using Splunk OpenTelemetry Collector via Helm
+   - Add Helm Repo
+     ```bash
+      $ helm repo add splunk-otel-collector-chart https://signalfx.github.io/splunk-otel-collector-chart 
+      ```
+   - Generate values.yaml renamed as otel.yaml:
+     ```bash
+      $ helm show values splunk-otel-collector-chart/splunk-otel-collector > otel.yaml 
+      ```
+   - Change/Add the Following to the yaml file:
+     ```bash
+      clusterName: legalloggers-cluster 
+      endpoint: https://139.162.49.20:32094/services/collector/event 
+      token:  
+      index: "k8s_events" 
+      metricsIndex: "k8s_metrics" 
+      insecureSkipVerify: true 
+      metricsEnabled: true 
+      logsEngine: otel 
+      containerRuntime: "containerd" 
+      excludeAgentLogs: false 
+      ```
+   - Deploy
+     ```bash
+      $ helm -n otel install legalloggers-cluster -f otel.yaml splunk-otel-collector-chart/splunk-otel-collector  
+      ```
+   
 
 
