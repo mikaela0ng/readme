@@ -388,6 +388,15 @@ Example:
   </tbody>
 </table>
 
+   - To connect the node:
+      - Click node
+      - Copy and paste in specified node the command given (run from agent command line, with the secret stored in a file).
+         - It will run on foreground.
+- Creating the Pipeline
+   - Create Pipeline, name it “----”
+   - Under Build Trigger, tick “Github hook trigger for GITScm polling”
+   - Under Pipeline, select “Pipeline script from SCM”, and fill in the details:  
+
 ```bash
 $ kubectl create namespace jenkins
 ```
