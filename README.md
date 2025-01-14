@@ -299,6 +299,10 @@ $ kubectl get nodes -o wide
 <node-IP-Address>:30000
 ```
 
+### 2. Set up for Auto-Build per Commit in Jenkins
+- Creating Webhook
+   - Go to Repository **Settings > Webhooks**
+      - <Jenkins URL>/github-webhook/
 ---
 ## Installation
 
@@ -324,10 +328,7 @@ Example:
     npm start
     ```
     
-### 2. Set up for Auto-Build per Commit in Jenkins
-- Creating Webhook
-   - Go to Repository **Settings > Webhooks**
-      - <Jenkins URL>/github-webhook/
+
 
 ---
 
