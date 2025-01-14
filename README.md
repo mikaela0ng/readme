@@ -122,7 +122,7 @@ Specifically, the group aims to do the following per tools:
 ---
 ## User Handbook
 
-### Installing Jenkins in a Kubernetes Cluster
+### 1. Installing Jenkins in a Kubernetes Cluster
 - Create a namespace:
 ```bash
 $ kubectl create namespace jenkins
@@ -284,10 +284,21 @@ spec:
 ```bash
 $ kubectl apply -f jenkins-service.yaml
 ```
-- Create a service to expose Jenkins:
+- To Access the Jenkins UI
+   - To view the initial password
 ```bash
-$ vi jenkins-service.yaml
+$ kubectl get pods -n jenkins 
+$ kubectl logs <pod-name> -n jenkins
 ```
+   - To view the IP Address
+```bash
+$ kubectl get nodes -o wide
+```
+   - To access via browser
+```bash
+<node-IP-Address>:30000
+```
+
 ---
 ## Installation
 
@@ -312,6 +323,11 @@ Example:
     ```bash
     npm start
     ```
+    
+### 2. Set up for Auto-Build per Commit in Jenkins
+- Creating Webhook
+   - Go to Repository **Settings > Webhooks**
+      - <Jenkins URL>/github-webhook/
 
 ---
 
