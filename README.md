@@ -7,7 +7,7 @@
 3. [Features](#Features)
 4. [User Handbook](#User-Handbook)
    - [Deploying Jenkins](#Deploying-Jenkins)
-   - [Deploying Webapp via Jenkins](#Installing-Jenkins-in-a-Kubernetes-Cluster)
+   - [Deploying Webapp via Jenkins](#Deploying-Webapp-via-Jenkins)
 5. [Contributing](#contributing)
 6. [License](#license)
 7. [Acknowledgements](#acknowledgements)
@@ -306,32 +306,10 @@ $ kubectl get nodes -o wide
 - Creating Webhook
    - Go to Repository **Settings > Webhooks**
       - &lt;JenkinsLink&gt;/github-webhook/
----
-## Installation
 
-Explain how users can install and set up the project. This may include prerequisites, installation steps, and dependencies.
 
-Example:
-### Prerequisites
-- Node.js 14+
-- npm 7+
 
-### Steps
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/username/project-name.git
-    ```
-2. Install dependencies:
-    ```bash
-    cd project-name
-    npm install
-    ```
-3. Start the application:
-    ```bash
-    npm start
-    ```
-    
-## Deploying Webapp
+## Deploying Webapp via Jenkins
 - Install the following plugins:
    - Docker
       - Docker API Plugin
@@ -395,11 +373,55 @@ Example:
 - Creating the Pipeline
    - Create Pipeline, name it “----”
    - Under Build Trigger, tick “Github hook trigger for GITScm polling”
-   - Under Pipeline, select “Pipeline script from SCM”, and fill in the details:  
+   - Under Pipeline, select “Pipeline script from SCM”, and fill in the details:
+      - SCM: Git
+      - Repository
+      - Credentials
+      - Branch
+- Run Build
+- The Webapp should be depoyed on the node that is specified.
+
+
+
+
 
 ```bash
 $ kubectl create namespace jenkins
 ```
+
+
+
+
+
+
+
+
+
+
+---
+## Installation
+
+Explain how users can install and set up the project. This may include prerequisites, installation steps, and dependencies.
+
+Example:
+### Prerequisites
+- Node.js 14+
+- npm 7+
+
+### Steps
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/username/project-name.git
+    ```
+2. Install dependencies:
+    ```bash
+    cd project-name
+    npm install
+    ```
+3. Start the application:
+    ```bash
+    npm start
+    ```
 
 ---
 
