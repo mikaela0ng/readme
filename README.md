@@ -9,6 +9,8 @@
    - [Deploying Webapp via Jenkins](#Deploying-Webapp-via-Jenkins)
    - [Deploying Prometheus](#Deploying-Prometheus)
    - [Deploying Splunk](#Deploying-Splunk)
+5. [Full Documentation](#Full-Documentation)
+
 
 ---
 ## Overview of Observability
@@ -569,6 +571,12 @@ $ kubectl apply -f service-monitor.yaml
      ```bash
       $ helm -n otel install legalloggers-cluster -f otel.yaml splunk-otel-collector-chart/splunk-otel-collector  
       ```
-   
+---
+## Full Documentation
+You may access the full documentation of [Observability: Monitoring & Logging](https://legalloggers-project.vercel.app/documentation)  project using the link below:
+```bash
+https://legalloggers-project.vercel.app/documentation
+```
+
 
 
