@@ -76,8 +76,10 @@ Specifically, the group aims to do the following per tools:
 ---
 ## Architecture
 ### Source Code Management(SCM)
-![App Screenshot](assets/sc.png)
-<h1 style="text-align: center;">Source Code Management</h1>
+<div align="center">
+    <h1>Source Code Management</h1>
+    ![App Screenshot](assets/sc.png)
+</div>
 ---
 ## Installation
 
