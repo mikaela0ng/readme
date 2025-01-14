@@ -38,17 +38,18 @@ Specifically, the group aims to do the following per tools:
            ■ Splunkforwarder service or sidecar stopped working
            
    ●Jenkins
-       ○ Set up a CI/CD pipeline that build and deploys the app whenever code changes.
+       ○ Set up a CI/CD pipeline that builds and deploys the app whenever code changes.
        
    ●Prometheus
        ○ Metric gathering solution of webapp.
        
-   ●Alerting using Alertmanager/Prometheus or Splunk
-       ○ Create alerting rules based on the KPIs:
-           ■% availability
-           ■resource utilization
-           ■out of memory errors
-           ■error rates
+- Alerting using Alertmanager/Prometheus or Splunk
+    - Create alerting rules based on the KPIs:
+        - % availability
+        - Resource Utilization
+        - Out of Memory Errors
+        - Error Rates
+
        ○ Establish threshold and implement annotations
 
    ●Grafana
