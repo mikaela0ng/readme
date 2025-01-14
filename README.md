@@ -6,6 +6,8 @@
 2. [Architecture](#Architecture)
 3. [Features](#Features)
 4. [User Handbook](#User-Handbook)
+   - [Deploying Jenkins](#Installing-Jenkins-in-a-Kubernetes-Cluster)
+   - [Deploying Webapp via Jenkins](#Installing-Jenkins-in-a-Kubernetes-Cluster)
 5. [Contributing](#contributing)
 6. [License](#license)
 7. [Acknowledgements](#acknowledgements)
@@ -122,7 +124,7 @@ Specifically, the group aims to do the following per tools:
 ---
 ## User Handbook
 
-### 1. Installing Jenkins in a Kubernetes Cluster
+## 1. Installing Jenkins in a Kubernetes Cluster
 - Create a namespace:
 ```bash
 $ kubectl create namespace jenkins
@@ -328,7 +330,29 @@ Example:
     npm start
     ```
     
+## Deploying Webapp
+- Install the following plugins:
+   - Docker
+      - Docker API Plugin
+      - Docker Common Plugin
+      - Docker Pipeline Plugin
+      - Docker Plugin
+- Create credentials:
+| What for  | Kind | ID  |
+|-----------|-----|-------------|
+| Github     | 30  | Engineer    |
+| Username with password       | 25  | Designer    |
+| Charlie   | 35  | Developer   |
 
+- Add Nodes:
+|  Name   |    Type   | Labels | Root Directory |                  Launch Method                 |
+|---------|-----------|--------|----------------|------------------------------------------------|
+| Macbook | permanent | node01 | /Users/academy | Launch agent by connecting it to the controller|
+
+
+```bash
+$ kubectl create namespace jenkins
+```
 
 ---
 
