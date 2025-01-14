@@ -6,7 +6,7 @@
 2. [Architecture](#Architecture)
 3. [Features](#Features)
 4. [User Handbook](#User-Handbook)
-   - [Deploying Jenkins](#1.-Installing-Jenkins-in-a-Kubernetes-Cluster)
+   - [Deploying Jenkins](#Deploying-Jenkins)
    - [Deploying Webapp via Jenkins](#Installing-Jenkins-in-a-Kubernetes-Cluster)
 5. [Contributing](#contributing)
 6. [License](#license)
@@ -124,6 +124,7 @@ Specifically, the group aims to do the following per tools:
 ---
 ## User Handbook
 
+## Deploying Jenkins
 ### 1. Installing Jenkins in a Kubernetes Cluster
 - Create a namespace:
 ```bash
