@@ -5,7 +5,7 @@
 1. [Overview of Observability](#Overview-of-Observability)
 2. [Architecture](#Architecture)
 3. [Features](#Features)
-4. [Usage](#usage)
+4. [User Handbook](#User-Handbook)
 5. [Contributing](#contributing)
 6. [License](#license)
 7. [Acknowledgements](#acknowledgements)
@@ -119,6 +119,14 @@ Specifically, the group aims to do the following per tools:
 - Accurately counts the number of nodes or pods, categorized by their various statuses.
 - Displays charts that visualize container resource utilization, pod resources, and node resources over time.
 
+---
+## User Handbook
+
+### Installing Jenkins in a Kubernetes Cluster
+- Create a namespace:
+```bash
+   $ kubectl create namespace jenkins
+```         
 ---
 ## Installation
 
