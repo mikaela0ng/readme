@@ -124,6 +124,36 @@ Specifically, the group aims to do the following per tools:
 
 ---
 ## User Handbook
+### Pre-requisites
+
+- Installing Helm
+   - Follow the instructions in the [Helm Website](https://helm.sh/docs/intro/install/) using Script or visit the link below:
+```bash
+https://helm.sh/docs/intro/install/
+```
+
+- Installing Docker
+   - To install docker, you may use the commands below:
+     ```bash
+      $ docker use context
+      $ docker context use default 
+      ```
+
+- Fix if "$docker ps" does not work, use the following:
+```bash
+$ sudo chmod 666 /var/run/docker.sock 
+```
+
+- To install java for jenkins to work, use the command below:
+```bash
+$ sudo yum install java-17-openjdk -y
+```
+
+- If git isn't installed, use this command:
+```bash
+$ sudo yum install git -y 
+```
+
 ### Deploying Jenkins
 
 ### 1. Installing Jenkins in a Kubernetes Cluster
