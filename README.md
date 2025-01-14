@@ -466,3 +466,7 @@ $ kubectl apply -f service-monitor.yaml
    $ kubectl apply -f https://github.com/splunk/splunk-operator/releases/download/2.7.0/splunk-operator-namespace.yaml --server-side  --force-conflicts
 ```
    - Creating a Splunk Enterprise Deployment
+      - Creating a Standalone Splunk:
+```bash
+$ vi splunk-standalone.yaml
+```
