@@ -390,7 +390,7 @@ $ kubectl get nodes -o wide
    - Setting up Prometheus using Helm
       - Create a "monitoring" namespace
 ```bash
-   $ kubectl create namespace monitoring
+$ kubectl create namespace monitoring
 ```
    - Add Helm Repository Info
 ```bash
@@ -460,13 +460,56 @@ $ kubectl apply -f service-monitor.yaml
 ---
 ## Deploying Splunk
 ### Deploying Splunk Enterprise with Splunk Operator using Helm:
-   - Installing Splunk Operator using the [Splunk Documentation](https://splunk.github.io/splunk-operator/#installing-the-splunk-operator)
-      - Start the Splunk Operator on a specific namespace:
+#### Installing Splunk Operator using the [Splunk Documentation](https://splunk.github.io/splunk-operator/#installing-the-splunk-operator)
+      - To start the Splunk Operator, run the command below and it would be created on a specific namespace:
 ```bash
    $ kubectl apply -f https://github.com/splunk/splunk-operator/releases/download/2.7.0/splunk-operator-namespace.yaml --server-side  --force-conflicts
 ```
    - Creating a Splunk Enterprise Deployment
       - Creating a Standalone Splunk:
-```bash
-$ vi splunk-standalone.yaml
-```
+      ```bash
+      $ vi splunk-standalone.yaml
+      ```
+      - Copy and paste the following:
+      ```bash
+      apiVersion: enterprise.splunk.com/v4
+      kind: Standalone 
+      metadata: 
+        name: s1 
+        namespace: splunk-operator 
+        finalizers: 
+        - enterprise.splunk.com/delete-pvc 
+      spec: 
+        etcVolumeStorageConfig: 
+          storageCapacity: 10Gi 
+        varVolumeStorageConfig: 
+          storageCapacity: 30Gi 
+        serviceTemplate: 
+          spec: 
+            type: NodePort 
+        startupProbe: 
+          initialDelaySeconds: 300 
+          periodSeconds: 10 
+          failureThreshold: 30 
+        livenessInitialDelaySeconds: 400 
+        readinessInitialDelaySeconds: 390
+      ```
+      - Then apply the Splunk Standalone:
+      ```bash
+      $ kubectl apply -f splunk-standalone.yaml -n splunk-operator
+      ```
+   - Changing Services to NodePort
+     ```bash
+      $ kubectl edit service -n splunk-operator <service-name>
+      ```
+     - splunk-s1-standalone-service
+        - http-web
+           - type: NodePort
+           - nodePort: 32093
+        - http-hec
+           - type: NodePort
+           - nodePort: 32094
+   
+   - To access the Splunk Web UI:
+      - &lt;Node-IP-Adress&gt;:32093
+
