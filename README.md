@@ -345,10 +345,26 @@ Example:
 | Charlie   | 35  | Developer   |
 
 - Add Nodes:
-|  Name   |    Type   | Labels | Root Directory |                  Launch Method                 |
-|---------|-----------|--------|----------------|------------------------------------------------|
-| Macbook | permanent | node01 | /Users/academy | Launch agent by connecting it to the controller|
-
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Labels</th>
+      <th>Root Directory</th>
+      <th>Launch Method</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Macbook</td>
+      <td>permanent</td>
+      <td>node01</td>
+      <td>/Users/academy</td>
+      <td>Launch agent by connecting it to the controller</td>
+    </tr>
+  </tbody>
+</table>
 
 ```bash
 $ kubectl create namespace jenkins
