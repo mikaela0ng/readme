@@ -9,9 +9,7 @@
    - [Deploying Webapp via Jenkins](#Deploying-Webapp-via-Jenkins)
    - [Deploying Prometheus](#Deploying-Prometheus)
    - [Deploying Splunk](#Deploying-Splunk)
-5. [Contributing](#contributing)
-6. [License](#license)
-7. [Acknowledgements](#acknowledgements)
+
 ---
 ## Overview of Observability
 
