@@ -8,6 +8,7 @@
 4. [User Handbook](#User-Handbook)
    - [Deploying Jenkins](#Deploying-Jenkins)
    - [Deploying Webapp via Jenkins](#Deploying-Webapp-via-Jenkins)
+   - [Deploying Prometheus](#Deploying-Prometheus)
 5. [Contributing](#contributing)
 6. [License](#license)
 7. [Acknowledgements](#acknowledgements)
