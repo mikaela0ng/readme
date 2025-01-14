@@ -30,7 +30,7 @@ The purpose of this project is to provide real-time insights into the health, pe
 
 ### General Objectives
 To use prometheus, alertmanager, grafana, and splunk to monitor logs of webapp and k8s cluster for efficient troubleshooting and problem/incident investigation.
---
+
 Specifically, the group aims to do the following per tools:
 
 - Webapps
