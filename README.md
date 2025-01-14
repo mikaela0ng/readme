@@ -4,7 +4,7 @@
 
 1. [Overview of Observability](#Overview-of-Observability)
 2. [Architecture](#Architecture)
-3. [Installation](#installation)
+3. [Features](#Features)
 4. [Usage](#usage)
 5. [Contributing](#contributing)
 6. [License](#license)
@@ -91,6 +91,34 @@ Specifically, the group aims to do the following per tools:
    - Prometheus
    - Grafana
    - Splunk
+---
+## Features
+### Webapp Deployment
+- Capable of generating log messages using standard logging patterns and levels.
+- A static web application designed to simulate production issues, such as high 5XX and 4XX errors, disruptions in Prometheus exporters, and failures in the Splunk forwarder service or sidecar containers.
+
+### Jenkins (CI/CD Pipeline)
+- Automates the build and deployment of the web application whenever changes are made to the source code.
+
+### Splunk
+- Capable of ingesting logs from both the web application and the Kubernetes cluster.
+- Parses and extracts relevant fields from log entries in a structured manner, facilitating easier log analysis while ensuring sensitive data, such as credentials, is filtered out.
+- Dashboard Features:
+   - Accurately tracks user activity and error rates.
+   - Allows configuration of user roles and permissions, enabling new users to search through logs with restricted privileges.
+
+### Prometheus
+- Collects data metrics related to the web application or service, providing insights into performance and resource usage.
+
+### Alerting
+- Provides notifications based on key performance indicators (KPIs), such as availability percentage, resource utilization, out-of-memory errors, and error rates.
+- Allows the establishment of thresholds and the implementation of annotations for better monitoring.
+  
+### Grafana
+- Provides a dashboard integrated with Prometheus to monitor real-time metrics.
+- Accurately counts the number of nodes or pods, categorized by their various statuses.
+- Displays charts that visualize container resource utilization, pod resources, and node resources over time.
+
 ---
 ## Installation
 
