@@ -5,11 +5,12 @@
 2. [Architecture](#Architecture)
 3. [Features](#Features)
 4. [User Handbook](#User-Handbook)
+   - [Pre-requisites](#Pre-requisites)
    - [Deploying Jenkins](#Deploying-Jenkins)
    - [Deploying Webapp via Jenkins](#Deploying-Webapp-via-Jenkins)
    - [Deploying Prometheus](#Deploying-Prometheus)
    - [Deploying Splunk](#Deploying-Splunk)
-5. [Full Documentation](#Full-Documentation)
+6. [Full Documentation](#Full-Documentation)
 
 
 ---
@@ -153,6 +154,8 @@ $ sudo yum install java-17-openjdk -y
 ```bash
 $ sudo yum install git -y 
 ```
+
+
 
 ### Deploying Jenkins
 
