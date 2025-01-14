@@ -381,7 +381,10 @@ $ kubectl get nodes -o wide
 - Run Build
 - The Webapp should be depoyed on the node that is specified.
 
-
+## Deploying Prometheus
+- Pre-requisites:
+   - Installing Helm
+      - Follow Instruction in the [Helm Website](https://helm.sh/docs/intro/install/) using Script
 
 
 
