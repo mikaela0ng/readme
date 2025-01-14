@@ -125,7 +125,7 @@ Specifically, the group aims to do the following per tools:
 ### Installing Jenkins in a Kubernetes Cluster
 - Create a namespace:
 ```bash
-   $ kubectl create namespace jenkins
+$ kubectl create namespace jenkins
 ```         
 ---
 ## Installation
