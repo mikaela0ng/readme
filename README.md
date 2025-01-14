@@ -29,26 +29,31 @@ To use prometheus, alertmanager, grafana, and splunk to monitor logs of webapp a
 
 Specifically, the group aims to do the following per tools:
 
-    ● Webapps
-○Deployed in a Kubernetes cluster
-○Properties that enable to simulate the following issues:
-■High HTTP 5xx errors
-■High HTTP 4xx errors
-■Exporters stopped working
-■Splunkforwarder service or sidecar stopped working
-●Jenkins
-○set up a CI/CD pipeline that build and deploys the app whenever code changes
-●Prometheus
-○metric gathering solution of webapp
-●Alerting using Alertmanager/Prometheus or Splunk
-○create alerting rules based on the KPIs:
-■% availability
-■resource utilization
-■out of memory errors
-■error rates
-○establish threshold and implement annotations
-●Grafana
-○use Prometheus as data source
+   ● Webapps
+       ○Deployed in a Kubernetes cluster
+       ○Properties that enable to simulate the following issues:
+           ■ High HTTP 5xx errors
+           ■ High HTTP 4xx errors
+           ■ Exporters stopped working
+           ■ Splunkforwarder service or sidecar stopped working
+           
+   ●Jenkins
+       ○ Set up a CI/CD pipeline that build and deploys the app whenever code changes.
+       
+   ●Prometheus
+       ○ Metric gathering solution of webapp.
+       
+   ●Alerting using Alertmanager/Prometheus or Splunk
+       ○ Create alerting rules based on the KPIs:
+           ■% availability
+           ■resource utilization
+           ■out of memory errors
+           ■error rates
+       ○ Establish threshold and implement annotations
+
+   ●Grafana
+
+○ Use Prometheus as data source
 ○create a set of dashboard to monitor the following:
 ■cluster overview
 □count of pods running
