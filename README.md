@@ -524,12 +524,11 @@ $ kubectl apply -f service-monitor.yaml
    - Getting the Current Password
       ```bash
       $ kubectl get secret -n splunk-operator 
-      $ kubectl get secret <splunk-s1-standalone-secret-v1> -n splunk-operator -o yaml 
-       
+      $ kubectl get secret <splunk-s1-standalone-secret-v1> -n splunk-operator -o yaml
       ```
      - Copy the decoded password’s value and paste it in the command below:
       ```bash
-            echo “<Decode Password’s Value>” | base64 -d
+      $ echo “<Decode Password’s Value>” | base64 -d
       ```
 
 
