@@ -525,7 +525,7 @@ $ kubectl apply -f service-monitor.yaml
       $ kubectl get secret -n splunk-operator 
       $ kubectl get secret <splunk-s1-standalone-secret-v1> -n splunk-operator -o yaml
       ```
-     - Copy the decoded password’s value and paste it in the command below:
+     - Copy the decoded password’s value and paste it together with the command below:
       ```bash
       $ echo “<Decode Password’s Value>” | base64 -d
       ```
@@ -536,7 +536,7 @@ $ kubectl apply -f service-monitor.yaml
       $ kubectl get secret -n splunk-operator
       $ kubectl edit secret -n splunk-operator <splunk-splunk-operator-secret> 
       ```
-     - Then change the password’s value to the new encoded password.
+     - Then change the password’s value with the new encoded password.
       ```bash
       $ kubectl get secret -n splunk-operator
       ```
