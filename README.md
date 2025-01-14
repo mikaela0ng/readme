@@ -80,14 +80,14 @@ Specifically, the group aims to do the following per tools:
    <h1>Source Code Management(SCM)</h1>
 </div>
 
-- **Source Code Management (SCM):** GitHub
-- **CI/CD Automation Server:** Connects to GitHub
-- **Build Docker Images:** CI/CD server pushes images to Dockerhub
-- **Deployment:** Kubernetes cluster pulls images from Dockerhub
-- **Nodes:**
+- Source Code Management (SCM): GitHub
+- CI/CD Automation Server: Connects to GitHub
+- Build Docker Images: CI/CD server pushes images to Dockerhub
+- Deployment: Kubernetes cluster pulls images from Dockerhub
+- Nodes:
    - Node 1: Contains CI/CD Automation Server and Static Website
    - Node 2: Contains Monitoring and Logging tools
-- **Monitoring and Logging Tools:**
+- Monitoring and Logging Tools:
    - Prometheus
    - Grafana
    - Splunk
