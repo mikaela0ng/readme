@@ -78,7 +78,7 @@ Specifically, the group aims to do the following per tools:
 ### Source Code Management(SCM)
 <div align="center">
     <h1>Source Code Management</h1>
-    ![App Screenshot](assets/sc.png)
+       <img src="assets/sc.png" alt="Example Image" />
 </div>
 ---
 ## Installation
