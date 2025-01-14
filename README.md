@@ -123,7 +123,7 @@ Specifically, the group aims to do the following per tools:
 
 ---
 ## User Handbook
-
+-
 ### Deploying Jenkins
 
 ### 1. Installing Jenkins in a Kubernetes Cluster
