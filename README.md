@@ -9,26 +9,20 @@
 5. [Contributing](#contributing)
 6. [License](#license)
 7. [Acknowledgements](#acknowledgements)
-
 ---
-
 ## Overview of Observability
 
 ### Observability: Monitoring & Logging
 Provides real-time insights into the health, performance, and status of workloads running within the Kubernetes environment. As the solution consists of structured logging, monitoring, and alerting, we enable efficient troubleshooting and rapid investigation of potential issues.
-
-
 ---
 
-## Features
+## Project Description
 
-List the key features of your project.
+### Project Overview
+The project aims to provide real-time insights into the health, performance, and status of workloads running within the Kubernetes environment. As the solution consists of structured logging, monitoring, and alerting, we enable efficient troubleshooting and rapid investigation of potential issues.
 
-Example:
-- User-friendly interface
-- Data visualization for spending trends
-- Secure login using OAuth
-- Export data to CSV
+### Project Purpose
+The purpose of this project is to provide real-time insights into the health, performance, and status of workloads running within the Kubernetes environment. As the solution consists of structured logging, monitoring, and alerting, we enable efficient troubleshooting and rapid investigation of potential issues.
 
 ---
 
