@@ -467,49 +467,69 @@ $ kubectl apply -f service-monitor.yaml
 ```
 #### Creating a Splunk Enterprise Deployment
 - Creating a Standalone Splunk:
-  ```bash
-  $ vi splunk-standalone.yaml
-  ```
-  - Copy and paste the following:
-    ```bash
-      apiVersion: enterprise.splunk.com/v4
-      kind: Standalone 
-      metadata: 
-        name: s1 
-        namespace: splunk-operator 
-        finalizers: 
-        - enterprise.splunk.com/delete-pvc 
-      spec: 
-        etcVolumeStorageConfig: 
-          storageCapacity: 10Gi 
-        varVolumeStorageConfig: 
-          storageCapacity: 30Gi 
-        serviceTemplate: 
-          spec: 
-            type: NodePort 
-        startupProbe: 
-          initialDelaySeconds: 300 
-          periodSeconds: 10 
-          failureThreshold: 30 
-        livenessInitialDelaySeconds: 400 
-        readinessInitialDelaySeconds: 390
-    ```
-      - Then apply the Splunk Standalone:
-      ```bash
-      $ kubectl apply -f splunk-standalone.yaml -n splunk-operator
-      ```
-   - Changing Services to NodePort
+   - Open the text editor using the command below:
      ```bash
+     $ vi splunk-standalone.yaml
+     ```
+   - Copy and paste the following:
+   ```bash
+   apiVersion: enterprise.splunk.com/v4
+   kind: Standalone
+   metadata:
+     name: s1
+     namespace: splunk-operator
+     finalizers:
+       - enterprise.splunk.com/delete-pvc
+   spec:
+     etcVolumeStorageConfig:
+       storageCapacity: 10Gi
+     varVolumeStorageConfig:
+       storageCapacity: 30Gi
+     serviceTemplate:
+       spec:
+         type: NodePort
+     startupProbe:
+       initialDelaySeconds: 300
+       periodSeconds: 10
+       failureThreshold: 30
+     livenessInitialDelaySeconds: 400
+     readinessInitialDelaySeconds: 390
+   ```
+   - Then apply the Splunk Standalone:
+     ```bash
+     $ kubectl apply -f splunk-standalone.yaml -n splunk-operator
+     ```
+     
+- Changing Services to NodePort
+   - To edit an existing service, use this command:
+      ```bash
       $ kubectl edit service -n splunk-operator <service-name>
       ```
-     - splunk-s1-standalone-service
-        - http-web
+     - In splunk-s1-standalone-service:
+        - http-web:
+       ```bash
            - type: NodePort
            - nodePort: 32093
-        - http-hec
+       ```
+        - http-hec:
+       ```bash
            - type: NodePort
            - nodePort: 32094
+       ```
    
    - To access the Splunk Web UI:
       - &lt;Node-IP-Adress&gt;:32093
+
+- Getting the Password
+   - Getting the Current Password
+      ```bash
+      $ kubectl get secret -n splunk-operator 
+      $ kubectl get secret <splunk-s1-standalone-secret-v1> -n splunk-operator -o yaml 
+       
+      ```
+     - Copy the decoded password’s value and paste it in the command below:
+      ```bash
+            echo “<Decode Password’s Value>” | base64 -d
+      ```
+
 
