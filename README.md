@@ -415,9 +415,43 @@ $ kubectl edit service -n monitoring <service-name>
          - type: NodePort
          - nodePort: 32092
         
-### Accessing UI's on the browser
+### Accessing UIs on the browser
 - Prometheus:
    - &lt;Node-IP-Adress&gt;:32090
+- Alert Manager:
+   - &lt;Node-IP-Adress&gt;:32091
+- Grafana:
+   - &lt;Node-IP-Adress&gt;:32092
+ 
+### For Scraping the Webapp Metrics
+- Use the custom CRD of Service Monitor by applying the following yaml file configuration.
+- Create a Service Monitor:
+```bash
+$ vi service-monitor.yaml
+```
+- Copy and paste the following:
+```bash
+apiVersion: monitoring.coreos.com/v1 
+kind: ServiceMonitor 
+metadata: 
+  labels: 
+    release: prometheus-operator 
+  name: webapp 
+  namespace: monitoring 
+spec: 
+  endpoints: 
+  - path: /metrics 
+    port: web 
+    targetPort: 3000 
+  namespaceSelector: 
+    matchNames: 
+    - webapp 
+  selector: 
+    matchLabels: 
+      app: webapp-service 
+```
+- It will scape metrics in /metrics endpoint of the webapp.
+
 
 
 
