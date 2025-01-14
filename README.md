@@ -450,6 +450,10 @@ spec:
     matchLabels: 
       app: webapp-service 
 ```
+- Then apply the Service Monitor:
+```bash
+$ kubectl apply -f service-monitor.yaml
+```
 - It will scape metrics in /metrics endpoint of the webapp.
 
 
