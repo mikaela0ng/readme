@@ -302,7 +302,7 @@ $ kubectl get nodes -o wide
 ### 2. Set up for Auto-Build per Commit in Jenkins
 - Creating Webhook
    - Go to Repository **Settings > Webhooks**
-      - <JenkinsURL>/github-webhook/
+      - <JenkinsLink>/github-webhook/
 ---
 ## Installation
 
