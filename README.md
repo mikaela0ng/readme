@@ -338,11 +338,32 @@ Example:
       - Docker Pipeline Plugin
       - Docker Plugin
 - Create credentials:
-| What for  | Kind | ID  |
-|-----------|-----|-------------|
-| Github     | 30  | Engineer    |
-| Username with password       | 25  | Designer    |
-| Charlie   | 35  | Developer   |
+<table>
+  <thead>
+    <tr>
+      <th>What for</th>
+      <th>Kind</th>
+      <th>ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Github</td>
+      <td>Docker Hub</td>
+      <td>KubeConfig</td>
+    </tr>
+    <tr>
+      <td>Username with Password</td>
+      <td>Username with Password</td>
+      <td>Secret file</td>
+    </tr>
+    <tr>
+      <td>github-credential</td>
+      <td>dockerhub-credential</td>
+      <td>kubeconfig-credential</td>
+    </tr>
+  </tbody>
+</table>
 
 - Add Nodes:
 <table>
