@@ -461,17 +461,17 @@ $ kubectl apply -f service-monitor.yaml
 ## Deploying Splunk
 ### Deploying Splunk Enterprise with Splunk Operator using Helm:
 #### Installing Splunk Operator using the [Splunk Documentation](https://splunk.github.io/splunk-operator/#installing-the-splunk-operator)
-      - To start the Splunk Operator, run the command below and it would be created on a specific namespace:
+- To start the Splunk Operator, run the command below and it would be created on a specific namespace:
 ```bash
    $ kubectl apply -f https://github.com/splunk/splunk-operator/releases/download/2.7.0/splunk-operator-namespace.yaml --server-side  --force-conflicts
 ```
-   - Creating a Splunk Enterprise Deployment
-      - Creating a Standalone Splunk:
-      ```bash
-      $ vi splunk-standalone.yaml
-      ```
-      - Copy and paste the following:
-      ```bash
+#### Creating a Splunk Enterprise Deployment
+- Creating a Standalone Splunk:
+  ```bash
+  $ vi splunk-standalone.yaml
+  ```
+  - Copy and paste the following:
+    ```bash
       apiVersion: enterprise.splunk.com/v4
       kind: Standalone 
       metadata: 
@@ -493,7 +493,7 @@ $ kubectl apply -f service-monitor.yaml
           failureThreshold: 30 
         livenessInitialDelaySeconds: 400 
         readinessInitialDelaySeconds: 390
-      ```
+    ```
       - Then apply the Splunk Standalone:
       ```bash
       $ kubectl apply -f splunk-standalone.yaml -n splunk-operator
