@@ -385,7 +385,7 @@ $ kubectl get nodes -o wide
 ## Deploying Prometheus
 ### Pre-requisites:
    - Installing Helm
-      - Follow Instruction in the [Helm Website](https://helm.sh/docs/intro/install/) using Script
+      - Follow the instructions in the [Helm Website](https://helm.sh/docs/intro/install/) using Script
    - Setting up Prometheus using Helm
       - Create a "monitoring" namespace
 ```bash
