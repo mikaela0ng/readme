@@ -51,29 +51,27 @@ Specifically, the group aims to do the following per tools:
         - Error Rates
    - Establish threshold and implement annotations
 
+- Grafana
+   - Use Prometheus as data source
+   - Create a set of dashboard to monitor the following:
+      - Cluster overview
+         - count of pods running
+         - count of pods failed
+         - count of pods ready
+         - ccount of pods not ready
+         - node count
+         - etc
+      - Chart view of containers
+         - resource utilization
+         - pod resources
+         - node resources over time
 
-
-   ●Grafana
-
-○ Use Prometheus as data source
-○create a set of dashboard to monitor the following:
-■cluster overview
-□count of pods running
-□count of pods failed
-□count of pods ready
-□ccount of pods not ready
-□node count
-□etc
-■Chart view of containers
-□resource utilization
-□pod resources
-□node resources over time
-●Splunk
-○ingest logs from both webapp and k8s cluster
-○create custom dashboard for different components of the webapp
-■user activity
-■error rates
-○configure user roles and permissions, allow new users to search through log with minimum privileges
+- Splunk
+   - ingest logs from both webapp and k8s cluster
+   - create custom dashboard for different components of the webapp
+      - user activity
+      - error rates
+   - configure user roles and permissions, allow new users to search through log with minimum privileges.
 
 ---
 
