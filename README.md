@@ -74,7 +74,11 @@ Specifically, the group aims to do the following per tools:
    - configure user roles and permissions, allow new users to search through log with minimum privileges.
 
 ---
-
+## Architecture
+### Source Code Management(SCM)
+![App Screenshot](assets/sc.jpg)
+<h1 style="text-align: center;">Source Code Management</h1>
+---
 ## Installation
 
 Explain how users can install and set up the project. This may include prerequisites, installation steps, and dependencies.
