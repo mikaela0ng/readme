@@ -10,6 +10,7 @@
    - [Deploying Webapp via Jenkins](#Deploying-Webapp-via-Jenkins)
    - [Deploying Prometheus](#Deploying-Prometheus)
    - [Deploying Splunk](#Deploying-Splunk)
+   - [Ingesting K8s Cluster Data to Splunk](#Ingesting-Data-to-Splunk)
 6. [Full Documentation](#Full-Documentation)
 
 
@@ -146,12 +147,12 @@ $ sudo chmod 666 /var/run/docker.sock
 
 - To install java for jenkins to work, use the command below:
 ```bash
-$ sudo yum install java-17-openjdk -y
+$ $ brew install java-17-openjdk -y
 ```
 
 - If git isn't installed, use this command:
 ```bash
-$ sudo yum install git -y 
+$ brew install git -y 
 ```
 
 
@@ -321,7 +322,7 @@ spec:
 $ kubectl apply -f jenkins-service.yaml
 ```
 - To Access the Jenkins UI
-   - To view the initial password
+   - To view the initial password:
 ```bash
 $ kubectl get pods -n jenkins 
 $ kubectl logs <pod-name> -n jenkins
@@ -384,7 +385,7 @@ $ kubectl get nodes -o wide
       <th>Name</th>
       <th>Type</th>
       <th>Labels</th>
-      <th>Root Directory</th>
+      <th>Root Dir</th>
       <th>Launch Method</th>
     </tr>
   </thead>
@@ -402,7 +403,7 @@ $ kubectl get nodes -o wide
    - To connect the node:
       - Click node
       - Copy and paste in specified node the command given (run from agent command line, with the secret stored in a file).
-         - It will run on foreground.
+         - Please do note that it will run on foreground.
 - Creating the Pipeline
    - Create Pipeline, name it “----”
    - Under Build Trigger, tick “Github hook trigger for GITScm polling”
@@ -415,11 +416,9 @@ $ kubectl get nodes -o wide
 - The Webapp should be depoyed on the node that is specified.
 
 ## Deploying Prometheus
-### Pre-requisites:
-   - Installing Helm
-      - Follow the instructions in the [Helm Website](https://helm.sh/docs/intro/install/) using Script
-   - Setting up Prometheus using Helm
-      - Create a "monitoring" namespace
+#### Pre-requisites:
+- Setting up Prometheus using Helm
+   - Create a "monitoring" namespace
 ```bash
 $ kubectl create namespace monitoring
 ```
@@ -448,7 +447,7 @@ $ kubectl edit service -n monitoring <service-name>
          - type: NodePort
          - nodePort: 32092
         
-### Accessing UIs on the browser
+#### Accessing UIs on the browser
 - Prometheus:
    - &lt;Node-IP-Adress&gt;:32090
 - Alert Manager:
@@ -456,7 +455,7 @@ $ kubectl edit service -n monitoring <service-name>
 - Grafana:
    - &lt;Node-IP-Adress&gt;:32092
  
-### For Scraping the Webapp Metrics
+#### For Scraping the Webapp Metrics
 - Use the custom CRD of Service Monitor by applying the following yaml file configuration.
 - Create a Service Monitor:
 ```bash
@@ -490,53 +489,53 @@ $ kubectl apply -f service-monitor.yaml
 - It will scape metrics in /metrics endpoint of the webapp.
 ---
 ## Deploying Splunk
-### Deploying Splunk Enterprise with Splunk Operator using Helm:
-#### Installing Splunk Operator using the [Splunk Documentation](https://splunk.github.io/splunk-operator/#installing-the-splunk-operator)
-- To start the Splunk Operator, run the command below and it would be created on a specific namespace:
+#### Deploying Splunk Enterprise with Splunk Operator using Helm:
+- Installing Splunk Operator using the [Splunk Documentation](https://splunk.github.io/splunk-operator/#installing-the-splunk-operator)
+   - To start the Splunk Operator, run the command below and it would be created on a specific namespace:
 ```bash
    $ kubectl apply -f https://github.com/splunk/splunk-operator/releases/download/2.7.0/splunk-operator-namespace.yaml --server-side  --force-conflicts
 ```
-#### Creating a Splunk Enterprise Deployment
-- Creating a Standalone Splunk:
-   - Open the text editor using the command below:
-     ```bash
-     $ vi splunk-standalone.yaml
-     ```
-   - Copy and paste the following:
-   ```bash
-   apiVersion: enterprise.splunk.com/v4
-   kind: Standalone
-   metadata:
-     name: s1
-     namespace: splunk-operator
-     finalizers:
-       - enterprise.splunk.com/delete-pvc
-   spec:
-     etcVolumeStorageConfig:
-       storageCapacity: 10Gi
-     varVolumeStorageConfig:
-       storageCapacity: 30Gi
-     serviceTemplate:
-       spec:
-         type: NodePort
-     startupProbe:
-       initialDelaySeconds: 300
-       periodSeconds: 10
-       failureThreshold: 30
-     livenessInitialDelaySeconds: 400
-     readinessInitialDelaySeconds: 390
-   ```
-   - Then apply the Splunk Standalone:
-     ```bash
-     $ kubectl apply -f splunk-standalone.yaml -n splunk-operator
-     ```
+- Creating a Splunk Enterprise Deployment
+   - Creating a Standalone Splunk:
+      - Open the text editor using the command below:
+        ```bash
+        $ vi splunk-standalone.yaml
+        ```
+      - Copy and paste the following:
+         ```bash
+         apiVersion: enterprise.splunk.com/v4
+         kind: Standalone
+         metadata:
+           name: s1
+           namespace: splunk-operator
+           finalizers:
+             - enterprise.splunk.com/delete-pvc
+         spec:
+           etcVolumeStorageConfig:
+             storageCapacity: 10Gi
+           varVolumeStorageConfig:
+             storageCapacity: 30Gi
+           serviceTemplate:
+             spec:
+               type: NodePort
+           startupProbe:
+             initialDelaySeconds: 300
+             periodSeconds: 10
+             failureThreshold: 30
+           livenessInitialDelaySeconds: 400
+           readinessInitialDelaySeconds: 390
+         ```
+      - Then apply the Splunk Standalone:
+        ```bash
+        $ kubectl apply -f splunk-standalone.yaml -n splunk-operator
+        ```
      
 - Changing Services to NodePort
-   - To edit an existing service, use this command:
+   - To edit an existing service configuration file, use this command:
       ```bash
       $ kubectl edit service -n splunk-operator <service-name>
       ```
-     - In splunk-s1-standalone-service:
+     - In service named "splunk-s1-standalone-service":
         - http-web:
        ```bash
            - type: NodePort
@@ -548,8 +547,8 @@ $ kubectl apply -f service-monitor.yaml
            - nodePort: 32094
        ```
    
-   - To access the Splunk Web UI:
-      - &lt;Node-IP-Adress&gt;:32093
+      - To access the Splunk Web UI:
+         - &lt;Node-IP-Adress&gt;:32093
 
 - Modifying the Password
    - Getting the Current Password
@@ -572,12 +571,13 @@ $ kubectl apply -f service-monitor.yaml
       ```bash
       $ kubectl get secret -n splunk-operator
       ```
-  ## Note:
+  #### Note:
   - Make sure that the labels of PV and PVC matched.
   - Make sure they have the same access modes.
- 
-- Ingesting Data to Splunk
-   - Using Splunk OpenTelemetry Collector via Helm
+
+---
+## Ingesting Data to Splunk
+- Using Splunk OpenTelemetry Collector via Helm
    - Add Helm Repo
      ```bash
       $ helm repo add splunk-otel-collector-chart https://signalfx.github.io/splunk-otel-collector-chart 
@@ -604,6 +604,84 @@ $ kubectl apply -f service-monitor.yaml
       $ helm -n otel install legalloggers-cluster -f otel.yaml splunk-otel-collector-chart/splunk-otel-collector  
       ```
 ---
+## Creating Webapp Alerting Rules
+- Create PrometheusRule manifest file
+```bash
+$ vi prometheus-webalerts.yaml  
+```
+- Then copy and Paste the following configuration:
+```bash
+apiVersion: monitoring.coreos.com/v1 
+kind: PrometheusRule 
+metadata: 
+  labels: 
+    release: prometheus-operator 
+  name: webapp-alerts 
+  namespace: monitoring 
+spec: 
+  groups: 
+  - name: webapp.rules 
+    rules: 
+    - alert: HighDowntime 
+      annotations: 
+        description: The web app is unreachable for more than 1 minute. 
+        summary: Web App is down 
+      expr: up{pod=~"webapp.*"} == 0 
+      for: 1m 
+      labels: 
+        severity: critical 
+    - alert: HighCPUUsage 
+      annotations: 
+        description: The CPU usage of {{ $labels.pod }} is above 80%. 
+        summary: High CPU Usage 
+      expr: sum(rate(container_cpu_usage_seconds_total{pod=~"webapp.*"}[1m])) > 0.8 
+      for: 5m 
+      labels: 
+        severity: warning 
+    - alert: High5xxErrorRate 
+      annotations: 
+        description: The error rate of HTTP 5xx requests is high. 
+        summary: High HTTP 5xx Error Rate 
+      expr: rate(http_requests_total{status=~"5.*"}[5m]) > 5 
+      for: 5m 
+      labels: 
+        severity: critical 
+    - alert: HighMemoryUsage 
+      annotations: 
+        description: The memory usage of {{ $labels.pod }} is above 80%. 
+        summary: High Memory Usage 
+      expr: sum(container_memory_working_set_bytes{pod=~"webapp.*"}) / sum(node_memory_MemTotal_bytes) 
+        > 0.8 
+      for: 5m 
+      labels: 
+        severity: warning 
+    - alert: High4xxErrorRate 
+      annotations: 
+        description: The error rate of HTTP 4xx requests is high. 
+        summary: High HTTP 4xx Error Rate 
+      expr: rate(http_requests_total{status=~"4.."}[5m]) > 5 
+      for: 5m 
+      labels: 
+        severity: warning 
+    - alert: TestAlert 
+      annotations: 
+        description: This is a test alert to verify Alertmanager. 
+        summary: Test alert 
+      expr: vector(1) 
+      for: 30s 
+      labels: 
+        severity: critical 
+```
+- Apply the yml configuration
+```bash
+$ kubectl apply -f prometheus-webalerts.yaml  
+```
+#### Note:
+- Make sure the rule is applied.
+- Visit alerts tab on prometheus and verify if the rule is applied.
+
+---
+
 ## Full Documentation
 You may access the full documentation of [Observability: Monitoring & Logging](https://legalloggers-project.vercel.app/documentation)  project using the link below:
 ```bash
